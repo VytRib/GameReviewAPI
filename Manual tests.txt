@@ -1,0 +1,87 @@
+		**GAMES**
+
+		*POST*
+
+{
+  "id": 500,
+  "title": "TEST",
+  "description": "Open-world action RPG with challenging combat",
+  "imageUrl": "",
+  "genreId": 2
+}
+
+		400
+{
+  "id": 5011,
+  "title": "",
+  "description": "Open-world action RPG with challenging combat",
+  "imageUrl": "",
+  "genreId": 2
+}
+
+		*PUT*
+
+{
+  "id": 1,
+  "title": "Elden Ring - Updated",
+  "description": "Open-world action RPG with improved features",
+  "imageUrl": "",
+  "genreId": 2
+}
+		400
+
+{
+  "id": 1,
+  "title": "",
+  "description": "Open-world action RPG with improved features",
+  "imageUrl": "",
+  "genreId": 2
+}
+
+
+		**GENRES**
+
+		*POST*
+
+{
+  "name": "MMORPG"
+}
+
+		400
+{
+  "name": ""
+}
+
+		*PUT*
+
+{
+  "id": 1,
+  "name": "Action-Adventure"
+}
+
+		400
+{
+  "id": 1,
+  "name": ""
+}
+
+		**REVIEW**
+
+		*POST*
+{
+  "rating": 5,
+  "comment": "Amazing gameplay with stunning graphics!",
+  "gameId": 1,
+  "userId": 3
+}
+
+*PUT*
+
+{
+  "id": 11,
+  "rating": 4,
+  "comment": "Still a great game, but some bugs remain.",
+  "gameId": 1,
+  "userId": 3
+}
+

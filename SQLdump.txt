@@ -1,0 +1,110 @@
+INSERT INTO "Users" ("Id", "Username", "PasswordHash", "Role") VALUES
+(1,'AlphaWolf','hash1','Guest'),
+(2,'BlueDragon','hash2','Guest'),
+(3,'CrimsonFox','hash3','Guest'),
+(4,'DarkKnight','hash4','Guest'),
+(5,'EmeraldEagle','hash5','Guest'),
+(6,'FireLion','hash6','Guest'),
+(7,'GoldenTiger','hash7','Guest'),
+(8,'HyperHawk','hash8','Guest'),
+(9,'IronGolem','hash9','Guest'),
+(10,'JadePanther','hash10','Guest'),
+(11,'KnightOwl','hash11','Guest'),
+(12,'LunarWolf','hash12','Guest'),
+(13,'MysticSerpent','hash13','Guest'),
+(14,'NovaPhoenix','hash14','Guest'),
+(15,'ObsidianBear','hash15','Guest'),
+(16,'PhantomRaven','hash16','Guest'),
+(17,'QuantumFalcon','hash17','Guest'),
+(18,'RedViper','hash18','Guest'),
+(19,'ShadowCobra','hash19','Guest'),
+(20,'ThunderHawk','hash20','Guest'),
+(21,'UltraShark','hash21','Guest'),
+(22,'VioletTiger','hash22','Guest'),
+(23,'WhiteStag','hash23','Guest'),
+(24,'XenoLion','hash24','Guest'),
+(25,'ZephyrFox','hash25','Guest');
+
+INSERT INTO "Genres" ("Id", "Name") VALUES
+(1, 'Action'),
+(2, 'Adventure'),
+(3, 'RPG'),
+(4, 'Strategy'),
+(5, 'Sports');
+
+INSERT INTO "Games" ("Id", "Title", "Description", "ImageUrl", "GenreId") VALUES
+-- Action
+(1, 'Doom Eternal', 'Fast-paced first-person shooter', '', 1),
+(2, 'Devil May Cry 5', 'Stylish hack and slash action', '', 1),
+(3, 'Sekiro: Shadows Die Twice', 'Intense samurai combat', '', 1),
+(4, 'Bayonetta 2', 'Over-the-top action adventure', '', 1),
+(5, 'Spider-Man', 'Swing through New York as Spider-Man', '', 1),
+-- Adventure
+(6, 'The Legend of Zelda: Breath of the Wild', 'Open-world exploration in Hyrule', '', 2),
+(7, 'Uncharted 4', 'Treasure-hunting action adventure', '', 2),
+(8, 'Tomb Raider (2013)', 'Rebooted Lara Croft adventure', '', 2),
+(9, 'Red Dead Redemption 2', 'Western open-world adventure', '', 2),
+(10, 'Life is Strange', 'Episodic narrative adventure', '', 2),
+-- RPG
+(11, 'The Witcher 3: Wild Hunt', 'Open-world fantasy RPG', '', 3),
+(12, 'Skyrim', 'Epic fantasy adventure RPG', '', 3),
+(13, 'Persona 5', 'Stylish Japanese RPG', '', 3),
+(14, 'Mass Effect 2', 'Sci-fi RPG with choice-driven story', '', 3),
+(15, 'Final Fantasy VII Remake', 'Classic RPG reimagined', '', 3),
+-- Strategy
+(16, 'Civilization VI', 'Turn-based empire building strategy', '', 4),
+(17, 'Starcraft II', 'Real-time sci-fi strategy', '', 4),
+(18, 'Age of Empires II', 'Classic historical strategy', '', 4),
+(19, 'XCOM 2', 'Turn-based tactical combat', '', 4),
+(20, 'Total War: Warhammer II', 'Fantasy real-time strategy', '', 4),
+-- Sports
+(21, 'FIFA 23', 'Realistic soccer simulation', '', 5),
+(22, 'NBA 2K23', 'Basketball simulation game', '', 5),
+(23, 'Madden NFL 23', 'American football simulation', '', 5),
+(24, 'Tony Hawk’s Pro Skater 1+2', 'Skateboarding fun', '', 5),
+(25, 'Rocket League', 'Car soccer hybrid game', '', 5);
+
+INSERT INTO "Reviews" ("Id", "Rating", "Comment", "GameId", "UserId") VALUES
+-- Action games
+(1,5,'Amazing gameplay!',1,1),(2,4,'Really enjoyed it',1,7),(3,3,'It was okay',1,12),(4,5,'Loved every part',1,20),(5,2,'Not my style',1,5),
+(6,4,'Stylish combat',2,3),(7,3,'Average experience',2,14),(8,5,'Super fun!',2,22),(9,4,'Would play again',2,9),(10,3,'Okay game',2,18),
+(11,5,'Intense and challenging',3,11),(12,4,'Pretty good',3,2),(13,3,'Nothing special',3,16),(14,4,'I liked it',3,25),(15,5,'Fantastic',3,6),
+(16,2,'Could be better',4,8),(17,3,'Decent game',4,10),(18,4,'Fun to play',4,23),(19,5,'Excellent!',4,4),(20,3,'Average',4,17),
+(21,5,'Web-swinging fun',5,19),(22,4,'Great combat',5,15),(23,3,'Okay story',5,13),(24,4,'Loved it',5,24),(25,2,'Not my style',5,21),
+-- Adventure games
+(26,5,'Beautiful open world',6,2),(27,4,'Great exploration',6,8),(28,3,'Decent story',6,12),(29,5,'Loved the mechanics',6,1),(30,2,'Too hard',6,17),
+(31,4,'Thrilling adventure',7,14),(32,3,'Average gameplay',7,6),(33,5,'Loved the puzzles',7,20),(34,4,'Would replay',7,5),(35,3,'Okay',7,11),
+(36,5,'Lara is amazing',8,9),(37,4,'Nice story',8,15),(38,3,'Gameplay average',8,19),(39,4,'Good level design',8,23),(40,5,'Fantastic',8,7),
+(41,2,'Too long',9,3),(42,3,'Average',9,16),(43,4,'Fun open world',9,13),(44,5,'Amazing story',9,24),(45,3,'Okay',9,18),
+(46,5,'Emotional narrative',10,12),(47,4,'Loved the choices',10,25),(48,3,'Average',10,8),(49,4,'Good characters',10,1),(50,2,'Not my style',10,21),
+-- RPG games
+(51,5,'Epic world',11,4),(52,4,'Loved the story',11,22),(53,3,'Average',11,7),(54,5,'Great characters',11,10),(55,2,'Too complex',11,19),
+(56,4,'Immersive world',12,15),(57,3,'Average',12,3),(58,5,'Loved it',12,8),(59,4,'Good combat',12,1),(60,3,'Okay',12,13),
+(61,5,'Stylish and fun',13,6),(62,4,'Great music',13,17),(63,3,'Average',13,2),(64,4,'Loved characters',13,24),(65,5,'Fantastic',13,20),
+(66,2,'Too short',14,9),(67,3,'Average',14,11),(68,4,'Great story',14,14),(69,5,'Excellent',14,5),(70,3,'Decent',14,21),
+(71,5,'Nostalgic remake',15,18),(72,4,'Beautiful visuals',15,12),(73,3,'Average gameplay',15,25),(74,4,'Loved it',15,2),(75,2,'Not for me',15,23),
+-- Strategy games
+(76,5,'Addictive gameplay',16,1),(77,4,'Fun to play',16,7),(78,3,'Average',16,13),(79,5,'Loved it',16,9),(80,2,'Too complicated',16,21),
+(81,4,'Challenging',17,5),(82,3,'Average',17,15),(83,5,'Loved the campaign',17,3),(84,4,'Fun multiplayer',17,24),(85,3,'Okay',17,11),
+(86,5,'Historical fun',18,8),(87,4,'Great strategy',18,10),(88,3,'Average',18,19),(89,4,'Fun',18,6),(90,5,'Excellent',18,2),
+(91,2,'Too hard',19,12),(92,3,'Average',19,14),(93,4,'Fun battles',19,22),(94,5,'Amazing',19,7),(95,3,'Okay',19,20),
+(96,5,'Fantasy epic',20,1),(97,4,'Loved units',20,17),(98,3,'Average',20,25),(99,4,'Good strategy',20,3),(100,2,'Not my style',20,8),
+-- Sports games
+(101,5,'Realistic soccer',21,4),(102,4,'Fun matches',21,9),(103,3,'Average',21,1),(104,5,'Loved it',21,18),(105,2,'Not for me',21,22),
+(106,4,'Great basketball',22,7),(107,3,'Average',22,20),(108,5,'Exciting',22,13),(109,4,'Would replay',22,16),(110,3,'Okay',22,25),
+(111,5,'Fun football',23,12),(112,4,'Loved gameplay',23,3),(113,3,'Average',23,19),(114,4,'Good career mode',23,21),(115,5,'Fantastic',23,1),
+(116,2,'Too hard',24,5),(117,3,'Decent',24,15),(118,4,'Fun tricks',24,23),(119,5,'Loved it',24,14),(120,3,'Average',24,9),
+(121,5,'Car soccer fun',25,2),(122,4,'Exciting matches',25,6),(123,3,'Okay',25,10),(124,4,'Good multiplayer',25,24),(125,2,'Not my style',25,11);
+
+
+
+
+
+
+DO $$ DECLARE
+    r RECORD;
+BEGIN
+    FOR r IN (SELECT tablename FROM pg_tables WHERE schemaname = 'public') LOOP
+        EXECUTE 'TRUNCATE TABLE "' || r.tablename || '" RESTART IDENTITY CASCADE;';
+    END LOOP;
+END $$;
