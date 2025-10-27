@@ -280,3 +280,4 @@ C:\Users\V\Desktop\GameReviewsAPI\obj\Debug\net9.0\GameReviewsAPI.pdb
 C:\Users\V\Desktop\GameReviewsAPI\obj\Debug\net9.0\GameReviewsAPI.genruntimeconfig.cache
 C:\Users\V\Desktop\GameReviewsAPI\obj\Debug\net9.0\ref\GameReviewsAPI.dll
 C:\Users\V\Desktop\GameReviewsAPI\bin\Debug\net9.0\Swashbuckle.AspNetCore.Annotations.dll
+C:\Users\V\Desktop\GameReviewsAPI\bin\Debug\net9.0\PostmanTests.json
