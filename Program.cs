@@ -1,4 +1,5 @@
 using GameReviewsAPI.Data;
+using GameReviewsAPI.Swagger;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -14,6 +15,8 @@ builder.Services.AddSwaggerGen(c =>
         Version = "v1",
         Description = "API for browsing and managing game reviews"
     });
+        c.EnableAnnotations();
+        c.OperationFilter<SwaggerRequestExamplesOperationFilter>();
 });
 
 builder.Services.AddControllers()

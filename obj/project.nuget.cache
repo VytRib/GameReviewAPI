@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "c4PHiZMWu8Y=",
+  "dgSpecHash": "jbR5mhNrBIE=",
   "success": true,
-  "projectFilePath": "C:\\Users\\V\\Desktop\\Saitynai\\GameReviewsAPI\\GameReviewsAPI.csproj",
+  "projectFilePath": "C:\\Users\\V\\Desktop\\GameReviewsAPI\\GameReviewsAPI.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\V\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
     "C:\\Users\\V\\.nuget\\packages\\microsoft.aspnetcore.authentication.jwtbearer\\9.0.10\\microsoft.aspnetcore.authentication.jwtbearer.9.0.10.nupkg.sha512",
@@ -44,6 +44,7 @@
     "C:\\Users\\V\\.nuget\\packages\\npgsql\\9.0.3\\npgsql.9.0.3.nupkg.sha512",
     "C:\\Users\\V\\.nuget\\packages\\npgsql.entityframeworkcore.postgresql\\9.0.4\\npgsql.entityframeworkcore.postgresql.9.0.4.nupkg.sha512",
     "C:\\Users\\V\\.nuget\\packages\\swashbuckle.aspnetcore\\9.0.6\\swashbuckle.aspnetcore.9.0.6.nupkg.sha512",
+    "C:\\Users\\V\\.nuget\\packages\\swashbuckle.aspnetcore.annotations\\9.0.6\\swashbuckle.aspnetcore.annotations.9.0.6.nupkg.sha512",
     "C:\\Users\\V\\.nuget\\packages\\swashbuckle.aspnetcore.swagger\\9.0.6\\swashbuckle.aspnetcore.swagger.9.0.6.nupkg.sha512",
     "C:\\Users\\V\\.nuget\\packages\\swashbuckle.aspnetcore.swaggergen\\9.0.6\\swashbuckle.aspnetcore.swaggergen.9.0.6.nupkg.sha512",
     "C:\\Users\\V\\.nuget\\packages\\swashbuckle.aspnetcore.swaggerui\\9.0.6\\swashbuckle.aspnetcore.swaggerui.9.0.6.nupkg.sha512",

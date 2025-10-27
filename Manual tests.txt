@@ -1,25 +1,15 @@
-		**GAMES**
-
-		*POST*
+**GAMES**
+*POST*
 
 {
-  "id": 500,
+  "id": 100,
   "title": "TEST",
   "description": "Open-world action RPG with challenging combat",
   "imageUrl": "",
   "genreId": 2
 }
 
-		400
-{
-  "id": 5011,
-  "title": "",
-  "description": "Open-world action RPG with challenging combat",
-  "imageUrl": "",
-  "genreId": 2
-}
-
-		*PUT*
+*PUT*
 
 {
   "id": 1,
@@ -28,47 +18,27 @@
   "imageUrl": "",
   "genreId": 2
 }
-		400
+
+
+**GENRES**
+*POST*
 
 {
-  "id": 1,
-  "title": "",
-  "description": "Open-world action RPG with improved features",
-  "imageUrl": "",
-  "genreId": 2
-}
-
-
-		**GENRES**
-
-		*POST*
-
-{
+  "id": 6,
   "name": "MMORPG"
 }
 
-		400
-{
-  "name": ""
-}
-
-		*PUT*
-
+*PUT*
 {
   "id": 1,
   "name": "Action-Adventure"
 }
 
-		400
-{
-  "id": 1,
-  "name": ""
-}
+**REVIEW**
+*POST*
 
-		**REVIEW**
-
-		*POST*
 {
+  "id": 500,
   "rating": 5,
   "comment": "Amazing gameplay with stunning graphics!",
   "gameId": 1,

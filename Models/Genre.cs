@@ -4,11 +4,10 @@ namespace GameReviewsAPI.Models
 {
     public class Genre
     {
+        [Required(ErrorMessage = "Id is required.")]
         public int Id { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Name is required.")]
         public string Name { get; set; }
-
-        public List<Game>? Games { get; set; }
     }
 }

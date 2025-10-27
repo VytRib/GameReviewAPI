@@ -864,6 +864,22 @@
           "buildMultiTargeting/Swashbuckle.AspNetCore.props": {}
         }
       },
+      "Swashbuckle.AspNetCore.Annotations/9.0.6": {
+        "type": "package",
+        "dependencies": {
+          "Swashbuckle.AspNetCore.SwaggerGen": "9.0.6"
+        },
+        "compile": {
+          "lib/net9.0/Swashbuckle.AspNetCore.Annotations.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "runtime": {
+          "lib/net9.0/Swashbuckle.AspNetCore.Annotations.dll": {
+            "related": ".pdb;.xml"
+          }
+        }
+      },
       "Swashbuckle.AspNetCore.Swagger/9.0.6": {
         "type": "package",
         "dependencies": {
@@ -3112,6 +3128,24 @@
         "swashbuckle.aspnetcore.nuspec"
       ]
     },
+    "Swashbuckle.AspNetCore.Annotations/9.0.6": {
+      "sha512": "NGrxo6pkPgzKGD0t6FalY57aWrwR6S2xNq1MJEK+R7rX5asZlEfFJLps8VapRjBKcYgTvyguAV1lDrgabF6Krg==",
+      "type": "package",
+      "path": "swashbuckle.aspnetcore.annotations/9.0.6",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net8.0/Swashbuckle.AspNetCore.Annotations.dll",
+        "lib/net8.0/Swashbuckle.AspNetCore.Annotations.pdb",
+        "lib/net8.0/Swashbuckle.AspNetCore.Annotations.xml",
+        "lib/net9.0/Swashbuckle.AspNetCore.Annotations.dll",
+        "lib/net9.0/Swashbuckle.AspNetCore.Annotations.pdb",
+        "lib/net9.0/Swashbuckle.AspNetCore.Annotations.xml",
+        "package-readme.md",
+        "swashbuckle.aspnetcore.annotations.9.0.6.nupkg.sha512",
+        "swashbuckle.aspnetcore.annotations.nuspec"
+      ]
+    },
     "Swashbuckle.AspNetCore.Swagger/9.0.6": {
       "sha512": "Bgyc8rWRAYwDrzjVHGbavvNE38G1Dfgf1McHYm+WUr4TxkvEAXv8F8B1z3Kmz4BkDCKv9A/1COa2t7+Ri5+pLg==",
       "type": "package",
@@ -3584,7 +3618,8 @@
       "Microsoft.AspNetCore.OpenApi >= 9.0.10",
       "Microsoft.EntityFrameworkCore.Tools >= 9.0.10",
       "Npgsql.EntityFrameworkCore.PostgreSQL >= 9.0.4",
-      "Swashbuckle.AspNetCore >= 9.0.6"
+      "Swashbuckle.AspNetCore >= 9.0.6",
+      "Swashbuckle.AspNetCore.Annotations >= 9.0.6"
     ]
   },
   "packageFolders": {
@@ -3594,11 +3629,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\V\\Desktop\\Saitynai\\GameReviewsAPI\\GameReviewsAPI.csproj",
+      "projectUniqueName": "c:\\Users\\V\\Desktop\\GameReviewsAPI\\GameReviewsAPI.csproj",
       "projectName": "GameReviewsAPI",
-      "projectPath": "C:\\Users\\V\\Desktop\\Saitynai\\GameReviewsAPI\\GameReviewsAPI.csproj",
+      "projectPath": "c:\\Users\\V\\Desktop\\GameReviewsAPI\\GameReviewsAPI.csproj",
       "packagesPath": "C:\\Users\\V\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\V\\Desktop\\Saitynai\\GameReviewsAPI\\obj\\",
+      "outputPath": "c:\\Users\\V\\Desktop\\GameReviewsAPI\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -3657,6 +3692,10 @@
             "version": "[9.0.4, )"
           },
           "Swashbuckle.AspNetCore": {
+            "target": "Package",
+            "version": "[9.0.6, )"
+          },
+          "Swashbuckle.AspNetCore.Annotations": {
             "target": "Package",
             "version": "[9.0.6, )"
           }

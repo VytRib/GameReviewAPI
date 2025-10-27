@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\V\\Desktop\\Saitynai\\GameReviewsAPI\\GameReviewsAPI.csproj": {}
+    "C:\\Users\\V\\Desktop\\GameReviewsAPI\\GameReviewsAPI.csproj": {}
   },
   "projects": {
-    "C:\\Users\\V\\Desktop\\Saitynai\\GameReviewsAPI\\GameReviewsAPI.csproj": {
+    "C:\\Users\\V\\Desktop\\GameReviewsAPI\\GameReviewsAPI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\V\\Desktop\\Saitynai\\GameReviewsAPI\\GameReviewsAPI.csproj",
+        "projectUniqueName": "C:\\Users\\V\\Desktop\\GameReviewsAPI\\GameReviewsAPI.csproj",
         "projectName": "GameReviewsAPI",
-        "projectPath": "C:\\Users\\V\\Desktop\\Saitynai\\GameReviewsAPI\\GameReviewsAPI.csproj",
+        "projectPath": "C:\\Users\\V\\Desktop\\GameReviewsAPI\\GameReviewsAPI.csproj",
         "packagesPath": "C:\\Users\\V\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\V\\Desktop\\Saitynai\\GameReviewsAPI\\obj\\",
+        "outputPath": "C:\\Users\\V\\Desktop\\GameReviewsAPI\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -70,6 +70,10 @@
               "version": "[9.0.4, )"
             },
             "Swashbuckle.AspNetCore": {
+              "target": "Package",
+              "version": "[9.0.6, )"
+            },
+            "Swashbuckle.AspNetCore.Annotations": {
               "target": "Package",
               "version": "[9.0.6, )"
             }
