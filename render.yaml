@@ -1,0 +1,26 @@
+services:
+  - type: web
+    name: game-reviews-api
+    env: dotnet
+    plan: free
+    buildCommand: dotnet publish -c Release -o out
+    startCommand: dotnet out/GameReviewsAPI.dll
+    healthCheckPath: /swagger/index.html
+    envVars:
+      - key: DATABASE_URL
+        fromDatabase:
+          name: game-reviews-db
+          property: connectionString
+      - key: JWT_SECRET
+        sync: false
+      - key: ASPNETCORE_ENVIRONMENT
+        value: Production
+      - key: ASPNETCORE_URLS
+        value: http://+:10000
+
+databases:
+  - name: game-reviews-db
+    dbName: game_reviews
+    user: postgres
+    plan: free
+    postgresVersion: 18

@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.EntityFrameworkCore;
 using GameReviewsAPI.Models;
 using GameReviewsAPI.Data;
@@ -14,6 +15,7 @@ namespace GameReviewsAPI.Controllers
 
         // GET ALL
         [HttpGet]
+        [AllowAnonymous]
         public async Task<ActionResult<IEnumerable<Genre>>> GetGenres()
         {
             return Ok(await _context.Genres.ToListAsync());
@@ -21,6 +23,7 @@ namespace GameReviewsAPI.Controllers
 
         // GET
         [HttpGet("{id}")]
+        [AllowAnonymous]
         public async Task<ActionResult<Genre>> GetGenre(int id)
         {
             if (id <= 0)
@@ -33,18 +36,82 @@ namespace GameReviewsAPI.Controllers
             return Ok(genre);
         }
 
-        // GET
-        [HttpGet("{id}/games")]
-        public async Task<ActionResult<IEnumerable<Game>>> GetGamesByGenre(int id)
+        /*// GET all games in a genre
+        [HttpGet("{genreId}/games")]
+        [AllowAnonymous]
+        public async Task<ActionResult<IEnumerable<Game>>> GetGamesByGenre(int genreId)
         {
-            var genreExists = await _context.Genres.AnyAsync(g => g.Id == id);
+            if (genreId <= 0)
+                return BadRequest("A valid 'genreId' must be provided.");
+
+            var genreExists = await _context.Genres.AnyAsync(g => g.Id == genreId);
             if (!genreExists) return NotFound("Genre not found.");
 
-            var games = await _context.Games.Where(g => g.GenreId == id).ToListAsync();
+            var games = await _context.Games.Where(g => g.GenreId == genreId).ToListAsync();
             return Ok(games);
         }
 
+        // GET a single game in a genre
+        [HttpGet("{genreId}/games/{gameId}")]
+        [AllowAnonymous]
+        public async Task<ActionResult<Game>> GetGameByGenre(int genreId, int gameId)
+        {
+            if (genreId <= 0 || gameId <= 0)
+                return BadRequest("Valid 'genreId' and 'gameId' must be provided.");
+
+            var genreExists = await _context.Genres.AnyAsync(g => g.Id == genreId);
+            if (!genreExists) return NotFound("Genre not found.");
+
+            var game = await _context.Games.FirstOrDefaultAsync(g => g.Id == gameId && g.GenreId == genreId);
+            if (game == null)
+                return NotFound("Game not found in this genre.");
+
+            return Ok(game);
+        }
+
+        // GET reviews for a game in a genre
+        [HttpGet("{genreId}/games/{gameId}/reviews")]
+        [AllowAnonymous]
+        public async Task<ActionResult<IEnumerable<Review>>> GetReviewsByGameInGenre(int genreId, int gameId)
+        {
+            if (genreId <= 0 || gameId <= 0)
+                return BadRequest("Valid 'genreId' and 'gameId' must be provided.");
+
+            var genreExists = await _context.Genres.AnyAsync(g => g.Id == genreId);
+            if (!genreExists) return NotFound("Genre not found.");
+
+            var game = await _context.Games.FindAsync(gameId);
+            if (game == null || game.GenreId != genreId)
+                return NotFound("Game not found in this genre.");
+
+            var reviews = await _context.Reviews.Where(r => r.GameId == gameId).ToListAsync();
+            return Ok(reviews);
+        }*/
+
+        // GET
+        [HttpGet("{genreId}/games/{gameId}/reviews/{reviewId}")]
+        [AllowAnonymous]
+        public async Task<ActionResult<Review>> GetReviewByGameInGenre(int genreId, int gameId, int reviewId)
+        {
+            if (genreId <= 0 || gameId <= 0 || reviewId <= 0)
+                return BadRequest("Valid 'genreId', 'gameId', and 'reviewId' must be provided.");
+
+            var genreExists = await _context.Genres.AnyAsync(g => g.Id == genreId);
+            if (!genreExists) return NotFound("Genre not found.");
+
+            var game = await _context.Games.FindAsync(gameId);
+            if (game == null || game.GenreId != genreId)
+                return NotFound("Game not found in this genre.");
+
+            var review = await _context.Reviews.FirstOrDefaultAsync(r => r.Id == reviewId && r.GameId == gameId);
+            if (review == null)
+                return NotFound("Review not found for this game.");
+
+            return Ok(review);
+        }
+
         // POST 
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         public async Task<ActionResult<Genre>> CreateGenre([FromBody] Genre genre)
         {
@@ -83,6 +150,7 @@ namespace GameReviewsAPI.Controllers
         }
 
         // PUT
+        [Authorize(Roles = "Admin")]
         [HttpPut]
         public async Task<IActionResult> UpdateGenre([FromBody] Genre genre)
         {
@@ -106,6 +174,7 @@ namespace GameReviewsAPI.Controllers
         }
 
         // DELETE
+        [Authorize(Roles = "Admin")]
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteGenre(int id)
         {

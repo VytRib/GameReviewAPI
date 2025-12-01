@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.EntityFrameworkCore;
 using GameReviewsAPI.Data;
 using GameReviewsAPI.Models;
@@ -14,6 +15,7 @@ namespace GameReviewsAPI.Controllers
 
         // GET all games
         [HttpGet]
+        [AllowAnonymous]
         public async Task<ActionResult<IEnumerable<Game>>> GetGames()
         {
             return Ok(await _context.Games.ToListAsync());
@@ -21,6 +23,7 @@ namespace GameReviewsAPI.Controllers
 
         // GET
         [HttpGet("{id}")]
+        [AllowAnonymous]
         public async Task<ActionResult<Game>> GetGame(int id)
         {
             if (id <= 0)
@@ -35,6 +38,7 @@ namespace GameReviewsAPI.Controllers
 
         // POST
         [HttpPost]
+        [Authorize(Roles = "Admin")]
         public async Task<ActionResult<Game>> CreateGame([FromBody] Game game)
         {
             if (!ModelState.IsValid)
@@ -69,6 +73,7 @@ namespace GameReviewsAPI.Controllers
         }
 
         // PUT
+        [Authorize(Roles = "Admin")]
         [HttpPut]
         public async Task<IActionResult> UpdateGame([FromBody] Game game)
         {
@@ -99,6 +104,7 @@ namespace GameReviewsAPI.Controllers
         }
 
         // DELETE
+        [Authorize(Roles = "Admin")]
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteGame(int id)
         {
