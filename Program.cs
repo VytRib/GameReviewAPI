@@ -99,9 +99,6 @@ builder.Services.AddDbContext<AppDbContext>(options =>
     var connectionString = Environment.GetEnvironmentVariable("DATABASE_URL")
         ?? builder.Configuration.GetConnectionString("DefaultConnection");
 
-    // Render (and some other hosts) provide a DATABASE_URL in URI form
-    // e.g. postgres://user:pass@host:5432/dbname
-    // Npgsql expects a standard connection string, so convert if needed.
     if (!string.IsNullOrEmpty(connectionString) &&
         (connectionString.StartsWith("postgres://", StringComparison.OrdinalIgnoreCase) ||
          connectionString.StartsWith("postgresql://", StringComparison.OrdinalIgnoreCase)))
@@ -115,13 +112,16 @@ builder.Services.AddDbContext<AppDbContext>(options =>
         var npgBuilder = new Npgsql.NpgsqlConnectionStringBuilder
         {
             Host = uri.Host,
-            Port = uri.Port,
             Username = username,
             Password = password,
             Database = database,
-            SslMode = Npgsql.SslMode.Require,
-            TrustServerCertificate = true
+            SslMode = Npgsql.SslMode.Require
         };
+
+        if (uri.Port > 0)
+        {
+            npgBuilder.Port = uri.Port;
+        }
 
         connectionString = npgBuilder.ToString();
     }
