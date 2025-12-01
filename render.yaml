@@ -1,10 +1,8 @@
 services:
   - type: web
     name: game-reviews-api
-    env: dotnet
+    runtime: docker
     plan: free
-    buildCommand: dotnet publish -c Release -o out
-    startCommand: dotnet out/GameReviewsAPI.dll
     healthCheckPath: /swagger/index.html
     envVars:
       - key: DATABASE_URL
@@ -13,10 +11,6 @@ services:
           property: connectionString
       - key: JWT_SECRET
         sync: false
-      - key: ASPNETCORE_ENVIRONMENT
-        value: Production
-      - key: ASPNETCORE_URLS
-        value: http://+:10000
 
 databases:
   - name: game-reviews-db
