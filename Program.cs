@@ -10,7 +10,15 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add JWT Authentication
 var jwtSettings = builder.Configuration.GetSection("JwtSettings");
-var secret = Environment.GetEnvironmentVariable("JWT_SECRET") ?? jwtSettings["Secret"] ?? throw new InvalidOperationException("JWT_SECRET not found");
+var secret = Environment.GetEnvironmentVariable("JWT_SECRET") 
+    ?? jwtSettings["Secret"] 
+    ?? "ThisIsAVeryLongSecretKeyThatShouldBeAtLeast32CharactersLongForHS256Security";
+
+if (string.IsNullOrEmpty(secret))
+{
+    throw new InvalidOperationException("JWT_SECRET environment variable or JwtSettings:Secret must be configured");
+}
+
 var issuer = jwtSettings["Issuer"];
 var audience = jwtSettings["Audience"];
 
@@ -88,12 +96,51 @@ builder.Services.AddControllers()
 
 builder.Services.AddDbContext<AppDbContext>(options =>
 {
-    var connectionString = Environment.GetEnvironmentVariable("DATABASE_URL") 
+    var connectionString = Environment.GetEnvironmentVariable("DATABASE_URL")
         ?? builder.Configuration.GetConnectionString("DefaultConnection");
+
+    // Render (and some other hosts) provide a DATABASE_URL in URI form
+    // e.g. postgres://user:pass@host:5432/dbname
+    // Npgsql expects a standard connection string, so convert if needed.
+    if (!string.IsNullOrEmpty(connectionString) &&
+        (connectionString.StartsWith("postgres://", StringComparison.OrdinalIgnoreCase) ||
+         connectionString.StartsWith("postgresql://", StringComparison.OrdinalIgnoreCase)))
+    {
+        var uri = new Uri(connectionString);
+        var userInfo = uri.UserInfo.Split(':', 2);
+        var username = userInfo.Length > 0 ? userInfo[0] : string.Empty;
+        var password = userInfo.Length > 1 ? userInfo[1] : string.Empty;
+        var database = uri.AbsolutePath?.TrimStart('/') ?? string.Empty;
+
+        var npgBuilder = new Npgsql.NpgsqlConnectionStringBuilder
+        {
+            Host = uri.Host,
+            Port = uri.Port,
+            Username = username,
+            Password = password,
+            Database = database,
+            SslMode = Npgsql.SslMode.Require,
+            TrustServerCertificate = true
+        };
+
+        connectionString = npgBuilder.ToString();
+    }
+
+    if (string.IsNullOrWhiteSpace(connectionString))
+    {
+        throw new InvalidOperationException("Database connection string not configured. Set DATABASE_URL or DefaultConnection.");
+    }
+
     options.UseNpgsql(connectionString);
 });
 
 var app = builder.Build();
+
+using (var scope = app.Services.CreateScope())
+{
+    var db = scope.ServiceProvider.GetRequiredService<AppDbContext>();
+    db.Database.Migrate();
+}
 
 app.UseSwagger();
 app.UseSwaggerUI(c =>
