@@ -18,14 +18,14 @@
     <PackageReference Include="Swashbuckle.AspNetCore.Annotations" Version="9.0.6" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="ClientApp\build\**\*">
+    <None Include="clientapp\build\**\*">
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </None>
   </ItemGroup>
 
   <Target Name="BuildClient" AfterTargets="PrepareForPublish">
-    <Exec WorkingDirectory="ClientApp" Command="npm install" />
-    <Exec WorkingDirectory="ClientApp" Command="npm run build" />
+    <Exec WorkingDirectory="clientapp" Command="npm install" />
+    <Exec WorkingDirectory="clientapp" Command="npm run build" />
   </Target>
 
 </Project>
