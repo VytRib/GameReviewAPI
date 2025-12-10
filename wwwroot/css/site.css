@@ -1,0 +1,114 @@
+:root{
+  --bg:#f6f8fb;
+  --accent:#2b6cb0;
+  --muted:#666;
+  --container-width:1100px;
+}
+*{box-sizing:border-box}
+body{font-family:Segoe UI,Roboto,Arial,sans-serif;margin:0;background:var(--bg);color:#222}
+.container{max-width:var(--container-width);margin:0 auto;padding:1rem}
+.site-header{background:#fff;border-bottom:1px solid #e6e9ef}
+.header-flex{display:flex;align-items:center;justify-content:space-between;gap:1rem}
+.logo{margin:0;font-size:1.25rem;color:var(--accent)}
+.main-nav{display:flex;gap:1rem}
+.main-nav a{color:var(--muted);text-decoration:none}
+.main-nav a:hover{color:var(--accent)}
+#auth-area{display:flex;gap:.5rem;align-items:center;white-space:nowrap}
+.user-info{color:var(--muted);font-size:.9rem;font-weight:500}
+.hero{padding:3rem 0;background:linear-gradient(180deg,#fff, #f8fbff)}
+.hero h2{margin:0 0 .5rem;font-size:1.75rem}
+.lead{color:var(--muted);margin-bottom:1rem}
+.btn{display:inline-block;background:var(--accent);color:#fff;padding:.5rem 1rem;border-radius:6px;text-decoration:none}
+.content-section{padding:2rem 0}
+.content-section.small{padding:.75rem 0}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1rem}
+.card{background:#fff;padding:1rem;border-radius:8px;border:1px solid #e6e9ef}
+
+/* genre layout */
+#genres-container{padding:0}
+.genre-section{margin-bottom:3rem}
+.genre-title{font-size:1.5rem;font-weight:600;margin:1.5rem 0 1rem;color:var(--accent);border-bottom:2px solid var(--accent);padding-bottom:.5rem}
+.games-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:1.5rem;margin-bottom:1rem}
+.games-grid.collapsed{grid-template-columns:repeat(4,minmax(220px,1fr));overflow:hidden}
+.games-grid.collapsed .game-card:nth-child(n+5){display:none}
+.game-card{background:#fff;border-radius:8px;overflow:hidden;border:1px solid #e6e9ef;transition:transform .2s,box-shadow .2s}
+.game-card:hover{transform:translateY(-4px);box-shadow:0 4px 12px rgba(0,0,0,.1)}
+.game-card-image{width:100%;height:140px;background:#e6e9ef;display:flex;align-items:center;justify-content:center;color:#999;font-size:.9rem}
+.game-card-image img.game-img{width:100%;height:100%;object-fit:cover;display:block}
+
+/* game detail */
+.game-detail-top{display:flex;gap:1.5rem;align-items:flex-start;margin-bottom:1rem}
+.game-detail-image{width:320px;height:220px;background:#e6e9ef;display:flex;align-items:center;justify-content:center;color:#999}
+.game-detail-image img{width:100%;height:100%;object-fit:cover;display:block}
+.game-detail-info{flex:1}
+.muted{color:var(--muted)}
+
+/* reviews */
+.review-item{background:#fff;border:1px solid #e6e9ef;padding:1rem;border-radius:8px;margin-bottom:.75rem}
+.review-item.highlight{border-color:var(--accent);background:#f0f7ff}
+.review-meta{display:flex;gap:.5rem;align-items:center;margin-bottom:.5rem}
+.review-author{font-weight:600}
+.review-date{color:var(--muted);font-size:.85rem}
+.review-stars{color:#f6b93b;margin-left:.5rem}
+.star{font-size:1rem;color:#ddd}
+.star.filled{color:#f6b93b}
+
+/* controls to the right of each review */
+.review-controls{margin-left:auto;display:flex;gap:.5rem}
+.btn.danger{background:#e53e3e}
+.btn.small{padding:.35rem .6rem;font-size:.85rem}
+.edit-form{background:#fff;border:1px solid #e6e9ef;padding:1rem;border-radius:8px;margin:0.5rem 0}
+.edit-form label{display:block;margin-bottom:.5rem}
+.edit-form textarea{width:100%;min-height:80px;padding:.5rem;border:1px solid #d6d9e0;border-radius:6px}
+.edit-form .form-actions{display:flex;gap:.5rem;margin-top:.5rem}
+
+/* review form */
+.review-form{background:#fff;border:1px solid #e6e9ef;padding:1.5rem;border-radius:8px;margin-bottom:1.5rem}
+.review-form h4{margin:0 0 1rem;color:var(--accent)}
+.review-form label{display:block;margin-bottom:1rem;color:#222;font-weight:500}
+.review-form select,
+.review-form textarea{width:100%;padding:.5rem;border:1px solid #d6d9e0;border-radius:6px;font-family:inherit;margin-top:.25rem}
+.review-form textarea{min-height:100px;resize:vertical}
+.review-form .form-actions{margin-top:1rem}
+.review-form .form-message{margin-top:.75rem;font-size:.9rem}
+.game-card-content{padding:1rem}
+.game-card-title{margin:0 0 .5rem;font-size:1rem;color:#222}
+.game-card-description{margin:0;color:var(--muted);font-size:.85rem;line-height:1.4;overflow:hidden;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical}
+.expand-btn{background:var(--accent);color:#fff;border:none;padding:.5rem 1rem;border-radius:6px;cursor:pointer;font-size:.9rem;margin-bottom:1rem}
+.expand-btn:hover{opacity:.9}
+
+/* rating badges */
+.game-card-rating{position:absolute;top:8px;right:8px;background:rgba(0,0,0,0.7);color:#fff;padding:.25rem .5rem;border-radius:6px;font-size:.85rem}
+.game-card{position:relative}
+.game-average{display:inline-block;background:#fff;border:1px solid #e6e9ef;padding:.25rem .5rem;border-radius:6px;color:var(--muted);font-weight:600}
+
+.site-footer{padding:1rem 0;background:#fff;border-top:1px solid #e6e9ef;margin-top:2rem}
+.site-footer p{margin:0;color:var(--muted)}
+.btn.small{padding:.35rem .6rem;font-size:.9rem}
+
+/* forms */
+.form-section{background:transparent}
+.auth-form{max-width:420px;background:#fff;padding:1rem;border-radius:8px;border:1px solid #e6e9ef}
+.auth-form label{display:block;margin-bottom:.75rem;color:#222}
+.auth-form input{width:100%;padding:.5rem;border:1px solid #d6d9e0;border-radius:6px;margin-top:.25rem}
+.form-actions{display:flex;gap:.5rem;align-items:center;margin-top:.75rem}
+.form-message{margin-top:.75rem;color:var(--muted)}
+
+/* small helpers */
+.link{color:var(--accent);text-decoration:none}
+.link:hover{text-decoration:underline}
+@media (max-width:600px){.site-header .container{flex-direction:column;gap:.75rem}.main-nav a{margin-left:.5rem}}
+
+/* Responsive image rules and decorative SVG icon for inspectability */
+svg.image-icon{width:48px;height:auto;flex:0 0 48px;display:block;color:#999}
+.game-card-image svg.image-icon{width:64px;height:auto}
+.game-card-image img.game-img, .game-detail-image img{max-width:100%;height:auto;display:block}
+
+/* Ensure the image container becomes full-width on smaller screens */
+@media (max-width:768px){
+  .game-detail-image{width:100%;height:auto}
+  .game-detail-image img{width:100%;height:auto}
+  .game-card-image{height:120px}
+  .game-card-image img.game-img{height:100%;object-fit:cover}
+  .game-card-image svg.image-icon{width:48px}
+}

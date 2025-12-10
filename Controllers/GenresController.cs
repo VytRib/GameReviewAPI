@@ -118,8 +118,12 @@ namespace GameReviewsAPI.Controllers
             if (!ModelState.IsValid)
                 return UnprocessableEntity(ModelState);
 
+            // allow server to assign an Id if admin did not provide one
             if (genre.Id <= 0)
-                return BadRequest("A valid 'Id' must be provided.");
+            {
+                var maxId = await _context.Genres.MaxAsync(g => (int?)g.Id) ?? 0;
+                genre.Id = maxId + 1;
+            }
 
             if (string.IsNullOrWhiteSpace(genre.Name))
                 return BadRequest("Genre 'Name' cannot be empty.");
@@ -181,6 +185,11 @@ namespace GameReviewsAPI.Controllers
             var genre = await _context.Genres.FindAsync(id);
             if (genre == null)
                 return NotFound("Genre not found.");
+
+            // Prevent deleting a genre that still has games
+            var hasGames = await _context.Games.AnyAsync(g => g.GenreId == id);
+            if (hasGames)
+                return Conflict("Cannot delete a genre that still has games.");
 
             _context.Genres.Remove(genre);
             await _context.SaveChangesAsync();

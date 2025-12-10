@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 
 namespace GameReviewsAPI.Models
 {
-    public class Game
+   public class Game
     {
         [Required]
         public int Id { get; set; }
@@ -19,5 +19,8 @@ namespace GameReviewsAPI.Models
 
         //[JsonIgnore] // Prevent Swagger / JSON from serializing this
         //public List<Review>? Reviews { get; set; }
+
+        // Expose reviews for the Game responses
+        public List<Review>? Reviews { get; set; }
     }
 }

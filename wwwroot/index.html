@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Game Reviews</title>
+    <link rel="stylesheet" href="/css/site.css">
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container header-flex">
+        <h1 class="logo">Game Reviews</h1>
+        <nav class="main-nav">
+          <a href="#home">Home</a>
+          <a href="#genres">Genres</a>
+          <a href="#about">About</a>
+        </nav>
+        <div id="auth-area">
+          <span id="user-info" class="user-info" style="display:none"></span>
+          <button id="auth-primary" class="btn small" type="button">Login</button>
+          <a id="auth-secondary" class="link" href="#register">Register</a>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section id="home" class="hero">
+        <div class="container">
+          <h2>Discover great games - and honest reviews</h2>
+          <p class="lead">Browse games by genre and read community reviews.</p>
+          <p><a class="btn" href="#genres">Browse Genres</a></p>
+        </div>
+      </section>
+
+      <section id="genres" class="content-section" style="display:none">
+        <div class="container">
+          <h2>Browse by Genre</h2>
+          <div id="genres-container"></div>
+        </div>
+      </section>
+
+      <section id="game-detail" class="content-section" style="display:none">
+        <div class="container">
+          <p><a class="link" href="#genres">&larr; Back to Genres</a></p>
+          <div id="game-detail-wrapper">
+            <h2 id="game-detail-title"></h2>
+            <div id="game-detail-controls" style="margin-bottom:.5rem"></div>
+            <div id="game-detail-meta" style="margin-bottom:.5rem"><span id="game-average" class="game-average"></span></div>
+            <div class="game-detail-top">
+              <div class="game-detail-image" id="game-detail-image">[Image]</div>
+              <div class="game-detail-info">
+                <p id="game-detail-description"></p>
+              </div>
+            </div>
+
+            <!-- review form area (inserted by JS) -->
+            <div id="review-form-area"></div>
+
+            <section id="game-detail-reviews">
+              <h3>Reviews</h3>
+              <div id="reviews-list">
+                <p class="muted">No reviews yet.</p>
+              </div>
+            </section>
+          </div>
+        </div>
+      </section>
+
+      <section id="about" class="content-section small">
+        <div class="container">
+          <h3>About</h3>
+          <p>Lab3 API darbas.</p>
+        </div>
+      </section>
+
+      <section id="login" class="content-section form-section" style="display:none">
+        <div class="container">
+          <h3>Login</h3>
+          <form id="login-form" class="auth-form">
+            <label>Username
+              <input type="text" name="username" id="login-username" required />
+            </label>
+            <label>Password
+              <input type="password" name="password" id="login-password" required />
+            </label>
+            <div class="form-actions">
+              <button class="btn" type="submit">Login</button>
+              <a class="link" href="#home">Main Menu</a>
+              <a class="link" href="#register">Register</a>
+            </div>
+            <div id="login-message" class="form-message"></div>
+          </form>
+        </div>
+      </section>
+
+      <section id="register" class="content-section form-section" style="display:none">
+        <div class="container">
+          <h3>Register</h3>
+          <form id="register-form" class="auth-form">
+            <label>Username
+              <input type="text" name="username" id="register-username" required />
+            </label>
+            <label>Password
+              <input type="password" name="password" id="register-password" required />
+            </label>
+            <div class="form-actions">
+              <button class="btn" type="submit">Register</button>
+              <a class="link" href="#home">Main Menu</a>
+              <a class="link" href="#login">Login</a>
+            </div>
+            <div id="register-message" class="form-message"></div>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container">
+        <p>&copy; <span id="year"></span> Game Reviews. Built with ASP.NET Core + React.</p>
+        <p><a class="link" href="/swagger">API Docs (Swagger)</a></p>
+      </div>
+    </footer>
+
+    <script src="/js/site.js"></script>
+  </body>
+</html>

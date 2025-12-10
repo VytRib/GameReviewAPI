@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\V\\Desktop\\GameReviewsAPI\\GameReviewsAPI.csproj": {}
+    "C:\\Users\\V\\Desktop\\Lab2\\GameReviewAPI\\GameReviewsAPI.csproj": {}
   },
   "projects": {
-    "C:\\Users\\V\\Desktop\\GameReviewsAPI\\GameReviewsAPI.csproj": {
+    "C:\\Users\\V\\Desktop\\Lab2\\GameReviewAPI\\GameReviewsAPI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\V\\Desktop\\GameReviewsAPI\\GameReviewsAPI.csproj",
+        "projectUniqueName": "C:\\Users\\V\\Desktop\\Lab2\\GameReviewAPI\\GameReviewsAPI.csproj",
         "projectName": "GameReviewsAPI",
-        "projectPath": "C:\\Users\\V\\Desktop\\GameReviewsAPI\\GameReviewsAPI.csproj",
+        "projectPath": "C:\\Users\\V\\Desktop\\Lab2\\GameReviewAPI\\GameReviewsAPI.csproj",
         "packagesPath": "C:\\Users\\V\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\V\\Desktop\\GameReviewsAPI\\obj\\",
+        "outputPath": "C:\\Users\\V\\Desktop\\Lab2\\GameReviewAPI\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

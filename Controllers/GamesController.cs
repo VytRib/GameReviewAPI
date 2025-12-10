@@ -13,12 +13,16 @@ namespace GameReviewsAPI.Controllers
         private readonly AppDbContext _context;
         public GamesController(AppDbContext context) => _context = context;
 
-        // GET all games
         [HttpGet]
         [AllowAnonymous]
-        public async Task<ActionResult<IEnumerable<Game>>> GetGames()
+        public async Task<ActionResult<IEnumerable<Game>>> GetGames([FromQuery] int? genreId)
         {
-            return Ok(await _context.Games.ToListAsync());
+            // include reviews when returning games
+            var q = _context.Games.Include(g => g.Reviews).AsQueryable();
+            if (genreId.HasValue && genreId > 0)
+                q = q.Where(g => g.GenreId == genreId.Value);
+
+            return Ok(await q.ToListAsync());
         }
 
         // GET
@@ -29,7 +33,10 @@ namespace GameReviewsAPI.Controllers
             if (id <= 0)
                 return BadRequest("A valid game ID must be provided.");
 
-            var game = await _context.Games.FirstOrDefaultAsync(g => g.Id == id);
+            var game = await _context.Games
+                .Include(g => g.Reviews)
+                .FirstOrDefaultAsync(g => g.Id == id);
+
             if (game == null)
                 return NotFound($"No game found with ID {id}.");
 
@@ -44,8 +51,12 @@ namespace GameReviewsAPI.Controllers
             if (!ModelState.IsValid)
                 return UnprocessableEntity(ModelState);
 
+            // allow server to assign an Id if admin did not provide one
             if (game.Id <= 0)
-                return BadRequest("A valid 'Id' field must be provided.");
+            {
+                var maxId = await _context.Games.MaxAsync(g => (int?)g.Id) ?? 0;
+                game.Id = maxId + 1;
+            }
 
             if (string.IsNullOrWhiteSpace(game.Title))
                 return BadRequest("Title cannot be empty.");
