@@ -6,8 +6,11 @@ WORKDIR /src
 COPY ["GameReviewsAPI.csproj", "."]
 RUN dotnet restore "GameReviewsAPI.csproj"
 
-# Copy source code
+# Copy source code including clientapp
 COPY . .
+
+# Create clientapp directory if it doesn't exist
+RUN mkdir -p ClientApp || true
 
 # Build the project
 RUN dotnet build "GameReviewsAPI.csproj" -c Release -o /app/build
